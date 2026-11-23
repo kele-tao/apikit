@@ -18,4 +18,5 @@ jobs:
       - run: ruff check .
       - run: pytest -q
       - run: python -m apikit --help
-      - run: python -m apikit diff examples/petstore.v1.json examples/petstore.v2.json --format md
+      - run: python -m apikit diff examples/petstore.v1.json examples/petstore.v2.json --format md --fail-on none
+      - run: python -m apikit diff examples/petstore.v1.json examples/petstore.v2.json --fail-on breaking --format json > /dev/null || test $? -eq 1
