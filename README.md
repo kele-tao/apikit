@@ -1,5 +1,7 @@
 # apikit
 
+**English** | [简体中文](README.zh-CN.md)
+
 **Fail your CI on an API change that would break a client, before you ship it.**
 
 ```
