@@ -1,0 +1,91 @@
+{
+  "algorithm": "HMAC-SHA256 over UTF-8 bytes of the canonical string",
+  "secret": "apikit-demo-secret-2026",
+  "note": "canonical is six newline-separated fields: method, path, canonical query, body sha256, timestamp, nonce",
+  "vectors": [
+    {
+      "name": "simple_get",
+      "method": "GET",
+      "path": "/pets",
+      "query": "",
+      "body": "",
+      "timestamp": 1700000000,
+      "nonce": "nonce-aaaa-0001",
+      "canonical": "GET\n/pets\n\ne3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\n1700000000\nnonce-aaaa-0001",
+      "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "signature": "v1=c64a0ba845fc8e5df064f4f363475c1273345b588a0cec1843e20892f00303d2"
+    },
+    {
+      "name": "query_sorted",
+      "method": "GET",
+      "path": "/pets",
+      "query": "limit=5&tag=dog",
+      "body": "",
+      "timestamp": 1700000000,
+      "nonce": "nonce-aaaa-0002",
+      "canonical": "GET\n/pets\nlimit=5&tag=dog\ne3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\n1700000000\nnonce-aaaa-0002",
+      "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "signature": "v1=97bc38149ffc2e9b99fe4d12d073e415b32b071a7bb5fa7c047766326ebc1833"
+    },
+    {
+      "name": "query_unsorted_input",
+      "method": "GET",
+      "path": "/pets",
+      "query": "tag=dog&limit=5",
+      "body": "",
+      "timestamp": 1700000000,
+      "nonce": "nonce-aaaa-0003",
+      "canonical": "GET\n/pets\nlimit=5&tag=dog\ne3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\n1700000000\nnonce-aaaa-0003",
+      "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "signature": "v1=51cf078245151816d3a9ea319b60b438006431022fe1027f30e0c582175e7a5f"
+    },
+    {
+      "name": "json_post",
+      "method": "POST",
+      "path": "/pets",
+      "query": "",
+      "body": "{\"name\":\"Rex\",\"tag\":\"dog\"}",
+      "timestamp": 1700000100,
+      "nonce": "nonce-aaaa-0004",
+      "canonical": "POST\n/pets\n\nca06eeed54048529c456d7659159fe3b0b5ab583f8a5b122b7294c1c2399cb78\n1700000100\nnonce-aaaa-0004",
+      "body_sha256": "ca06eeed54048529c456d7659159fe3b0b5ab583f8a5b122b7294c1c2399cb78",
+      "signature": "v1=3bded5bb88e2e0fd36646c1fe59f32b90e0a309e085232e42a1fca1081997977"
+    },
+    {
+      "name": "unicode_body",
+      "method": "POST",
+      "path": "/pets",
+      "query": "",
+      "body": "{\"name\":\"Miaou 猫\"}",
+      "timestamp": 1700000200,
+      "nonce": "nonce-aaaa-0005",
+      "canonical": "POST\n/pets\n\ndfad845e38f61584f1f9094f77a947c9f98e4860af37cea16a7cbff6857f5b19\n1700000200\nnonce-aaaa-0005",
+      "body_sha256": "dfad845e38f61584f1f9094f77a947c9f98e4860af37cea16a7cbff6857f5b19",
+      "signature": "v1=02bd8e2379dde2654006b8ac8e67ce8e1be28c5991b04da7a5923707d46232d7"
+    },
+    {
+      "name": "empty_body_put",
+      "method": "PUT",
+      "path": "/pets/42",
+      "query": "",
+      "body": "",
+      "timestamp": 1700000300,
+      "nonce": "nonce-aaaa-0006",
+      "canonical": "PUT\n/pets/42\n\ne3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\n1700000300\nnonce-aaaa-0006",
+      "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "signature": "v1=f39d43e714c615633b2c88751061ae9c799912022dd3c2d3692447ff88e6eb28"
+    },
+    {
+      "name": "path_with_escape",
+      "method": "GET",
+      "path": "/files/a b",
+      "query": "q=1",
+      "body": "",
+      "timestamp": 1700000400,
+      "nonce": "nonce-aaaa-0007",
+      "canonical": "GET\n/files/a b\nq=1\ne3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\n1700000400\nnonce-aaaa-0007",
+      "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "signature": "v1=72302ff133beb77f4817215d986d7cc7f2874565cf0a3fe05ef9ed4364be63f6"
+    }
+  ]
+}

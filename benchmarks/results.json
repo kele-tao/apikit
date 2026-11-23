@@ -1,0 +1,41 @@
+{
+  "environment": {
+    "platform": "Windows-11-10.0.26300-SP0",
+    "python": "3.12.10",
+    "machine": "AMD64"
+  },
+  "diff": {
+    "small_spec": {
+      "operations": 6,
+      "runs": 60,
+      "median_ms": 0.805,
+      "best_ms": 0.7,
+      "worst_ms": 2.004
+    },
+    "large_spec": {
+      "operations": 300,
+      "schemas": 40,
+      "findings": 3,
+      "raw_findings": 251,
+      "runs": 8,
+      "median_ms": 59.085,
+      "best_ms": 46.687,
+      "worst_ms": 70.656
+    }
+  },
+  "mock": {
+    "requests": 1000,
+    "total_s": 2.673,
+    "requests_per_s": 374.1,
+    "p50_ms": 2.182,
+    "p95_ms": 3.403
+  },
+  "signing": {
+    "count_per_run": 10000,
+    "canonical_per_s": 96936.8,
+    "sign_per_s": 54748.9,
+    "verify_per_s": 54271.1,
+    "verify_us": 18.43
+  },
+  "total_s": 6.29
+}

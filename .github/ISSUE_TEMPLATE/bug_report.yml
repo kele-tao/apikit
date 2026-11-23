@@ -1,0 +1,35 @@
+name: Bug report
+description: Something is wrong with apikit
+labels: ["bug"]
+body:
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: The exact command, the expected result and the actual result.
+      placeholder: |
+        $ apikit diff old.json new.json
+        expected: ...
+        actual: ...
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: apikit version
+      description: Output of `apikit --version`.
+    validations:
+      required: true
+  - type: dropdown
+    id: python
+    attributes:
+      label: Python version
+      options: ["3.10", "3.11", "3.12", "3.13"]
+    validations:
+      required: true
+  - type: textarea
+    id: spec
+    attributes:
+      label: Minimal spec fragment
+      description: Redact tokens and internal hostnames.
+      render: json

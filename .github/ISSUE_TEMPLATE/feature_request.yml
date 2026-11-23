@@ -1,0 +1,25 @@
+name: Feature request
+description: Propose a new rule, command or capability
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: The problem
+      description: What can you not do today? Concrete API changes are best.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed behaviour
+      description: What should the command print, and with which exit code?
+    validations:
+      required: true
+  - type: checkboxes
+    id: scope
+    attributes:
+      label: Scope check
+      options:
+        - label: This can be implemented with the Python standard library only.
+        - label: I am willing to open a pull request.
